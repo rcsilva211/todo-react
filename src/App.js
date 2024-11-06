@@ -1,75 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import TodoForm from './components/TodoForm/TodoForm';
-import TodoListFilter from './components/TodoListFilter/TodoListFilter';
-import Todo from './components/Todo/Todo';
+import React from 'react';
+import { Routes, Route, NavLink } from 'react-router-dom';
+import TodoApp from './components1/TodoReact/TodoReact';
+import TodoApp2 from './components2/TodoReact/TodoReact';
 import './App.css';
 
-const App = () => {
-  const [todos, setTodos] = useState(() => {
-    const savedTodos = localStorage.getItem('todos');
-    return savedTodos ? JSON.parse(savedTodos) : [];
-  });
-
-  const [filter, setFilter] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isEditing, setIsEditing] = useState(null);
-
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
-
-  const addTodo = (text) => {
-    const newTodo = { id: Date.now(), text, completed: false };
-    setTodos([...todos, newTodo]);
-  };
-
-  const editTodo = (id, text) => {
-    if (text !== undefined) {
-      setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
-      setIsEditing(null);
-    } else {
-      setIsEditing(id);
-    }
-  };
-
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
-  const toggleTodo = (id) => {
-    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
-  };
-
-  const filteredTodos = todos.filter((todo) => {
-    const matchesFilter =
-      (filter === 'completed' && todo.completed) || (filter === 'incomplete' && !todo.completed) || filter === 'all';
-
-    const matchesSearch = todo.text.toLowerCase().includes(searchTerm.toLowerCase());
-
-    return matchesFilter && matchesSearch;
-  });
-
+function App() {
   return (
-    <div className="container">
-      <h1>Todo List</h1>
-      <TodoForm addTodo={addTodo} />
-      <TodoListFilter filter={filter} setFilter={setFilter} setSearchTerm={setSearchTerm} />
-      <div style={{ overflowY: 'auto', maxHeight: '250px' }}>
-        <ul>
-          {filteredTodos.map((todo) => (
-            <Todo
-              key={todo.id}
-              todo={todo}
-              toggleTodo={toggleTodo}
-              isEditing={isEditing === todo.id}
-              deleteTodo={deleteTodo}
-              editTodo={editTodo}
-            />
-          ))}
+    <div>
+      <nav className="navbar">
+        <ul className="navbar-links">
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')} // Conditionally apply active class
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/ex1"
+              className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')} // Conditionally apply active class
+            >
+              Todo App
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/ex2"
+              className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')} // Conditionally apply active class
+            >
+              Todo App 2
+            </NavLink>
+          </li>
         </ul>
-      </div>
+      </nav>
+
+      <Routes>
+        <Route path="/ex1" element={<TodoApp />} />
+        <Route path="/ex2" element={<TodoApp2 />} />
+      </Routes>
     </div>
   );
-};
+}
 
 export default App;
