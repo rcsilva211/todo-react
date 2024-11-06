@@ -3,7 +3,7 @@ import './TodoListFilter.css';
 
 function TodoListFilter({ filter, setFilter, setSearchTerm }) {
   return (
-    <div>
+    <div style={{ marginBottom: '5px' }}>
       <h4>Filtros</h4>
       <div style={{ display: 'flex', gap: '10px' }}>
         <input type="text" placeholder="Pesquisar" className="search" onChange={(e) => setSearchTerm(e.target.value)} />
