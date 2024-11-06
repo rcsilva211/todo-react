@@ -23,10 +23,6 @@ button {
   user-select: none;
 }
 
-p {
-  margin: 0;
-}
-
 .todo-header {
   display: flex;
   justify-content: space-between;

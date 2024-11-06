@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import TodoApp from './components1/TodoReact/TodoReact';
-// import TodoApp2 from './components2/TodoApp/TodoApp';
+import TodoApp2 from './components2/TodoReact/TodoReact';
 import './App.css';
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
 
       <Routes>
         <Route path="/ex1" element={<TodoApp />} />
-        {/* <Route path="/ex2" element={<TodoApp2 />} /> */}
+        <Route path="/ex2" element={<TodoApp2 />} />
       </Routes>
     </div>
   );

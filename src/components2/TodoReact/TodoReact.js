@@ -21,7 +21,8 @@ const TodoReact = () => {
   }, [todos]);
 
   useEffect(() => {
-    document.title = todos.length ? `Todo List (${todos.length} tarefas )` : 'Todo List';
+    const todoCount = todos.length;
+    document.title = `Todo List (${todoCount} tarefas )`;
   }, [todos]);
 
   const addTodo = (text) => {
@@ -57,7 +58,20 @@ const TodoReact = () => {
 
   return (
     <div className="container">
-      <h1>Todo List</h1>
+      <div className="todo-header">
+        <h1>Todo List</h1>
+        <span>
+          {todos.length === 1 ? (
+            <p>
+              <b>{todos.length}</b> tarefa
+            </p>
+          ) : (
+            <p>
+              <b>{todos.length}</b> tarefas
+            </p>
+          )}
+        </span>
+      </div>
       <TodoForm addTodo={addTodo} />
       <TodoListFilter filter={filter} setFilter={setFilter} setSearchTerm={setSearchTerm} />
       <div style={{ overflowY: 'auto', maxHeight: '250px' }}>
