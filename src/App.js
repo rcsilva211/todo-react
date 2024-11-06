@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import TodoForm from './components/TodoForm/TodoForm';
 import TodoListFilter from './components/TodoListFilter/TodoListFilter';
@@ -45,7 +44,6 @@ const App = () => {
     const matchesFilter =
       (filter === 'completed' && todo.completed) || (filter === 'incomplete' && !todo.completed) || filter === 'all';
 
-    // Filter based on search term
     const matchesSearch = todo.text.toLowerCase().includes(searchTerm.toLowerCase());
 
     return matchesFilter && matchesSearch;
