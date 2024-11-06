@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './TodoForm.css';
 
 function TodoForm({ addTodo }) {
   const [input, setInput] = useState('');
@@ -14,6 +15,7 @@ function TodoForm({ addTodo }) {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        className="todo-input"
         type="text"
         placeholder="Adicionar nova tarefa..."
         value={input}
