@@ -31,7 +31,7 @@ function App() {
               to="/ex2"
               className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')} // Conditionally apply active class
             >
-              Todo App 2
+              Todo App - counter
             </NavLink>
           </li>
         </ul>
