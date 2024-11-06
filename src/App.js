@@ -1,8 +1,9 @@
 // App.js
 import React, { useState, useEffect } from 'react';
-import TodoForm from './TodoForm';
-import TodoListFilter from './TodoListFilter';
-import Todo from './Todo';
+import TodoForm from './components/TodoForm/TodoForm';
+import TodoListFilter from './components/TodoListFilter/TodoListFilter';
+import Todo from './components/Todo/Todo';
+import './App.css';
 
 const App = () => {
   const [todos, setTodos] = useState(() => {
@@ -11,6 +12,8 @@ const App = () => {
   });
 
   const [filter, setFilter] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isEditing, setIsEditing] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -21,26 +24,52 @@ const App = () => {
     setTodos([...todos, newTodo]);
   };
 
+  const editTodo = (id, text) => {
+    if (text !== undefined) {
+      setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
+      setIsEditing(null);
+    } else {
+      setIsEditing(id);
+    }
+  };
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   const toggleTodo = (id) => {
     setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
   };
 
   const filteredTodos = todos.filter((todo) => {
-    if (filter === 'completed') return todo.completed;
-    if (filter === 'incomplete') return !todo.completed;
-    return true;
+    const matchesFilter =
+      (filter === 'completed' && todo.completed) || (filter === 'incomplete' && !todo.completed) || filter === 'all';
+
+    // Filter based on search term
+    const matchesSearch = todo.text.toLowerCase().includes(searchTerm.toLowerCase());
+
+    return matchesFilter && matchesSearch;
   });
 
   return (
-    <div>
+    <div className="container">
       <h1>Todo List</h1>
       <TodoForm addTodo={addTodo} />
-      <TodoListFilter filter={filter} setFilter={setFilter} />
-      <ul>
-        {filteredTodos.map((todo) => (
-          <Todo key={todo.id} todo={todo} toggleTodo={toggleTodo} />
-        ))}
-      </ul>
+      <TodoListFilter filter={filter} setFilter={setFilter} setSearchTerm={setSearchTerm} />
+      <div style={{ overflowY: 'auto', maxHeight: '250px' }}>
+        <ul>
+          {filteredTodos.map((todo) => (
+            <Todo
+              key={todo.id}
+              todo={todo}
+              toggleTodo={toggleTodo}
+              isEditing={isEditing === todo.id}
+              deleteTodo={deleteTodo}
+              editTodo={editTodo}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
