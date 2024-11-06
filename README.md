@@ -17,7 +17,7 @@ This project was/is being made to learn and improve more on React. Practice make
 
 ## Credits
 
-Developed and maintained by ![Rodrigo Silva](https://github.com/rcsilva211/).
+Developed and maintained by [Rodrigo Silva](https://github.com/rcsilva211/).
 
 ## Bugs
 
