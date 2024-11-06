@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 .container {
   background-color: #f5f5f5;
   border-radius: 20px;
@@ -12,12 +13,48 @@
 h1 {
   margin-top: 0px;
   margin-bottom: 10px;
+=======
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-button {
-  cursor: pointer;
+.navbar-links {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+>>>>>>> Stashed changes
 }
 
-* {
-  user-select: none;
+.navbar-links li {
+  margin: 0 15px;
+}
+
+.navbar-item {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.navbar-item:hover {
+  color: #00b7ff;
+}
+
+.active-link {
+  color: #00b7ff;
+  border-bottom: 2px solid #00b7ff;
+}
+
+.navbar-item:active {
+  color: #00b7ff;
 }
