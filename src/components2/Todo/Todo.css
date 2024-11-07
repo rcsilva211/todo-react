@@ -23,6 +23,7 @@ input[type='checkbox'] + li {
 
 .buttons button {
   text-decoration: none !important;
+  font-size: 1rem;
 }
 
 .edit {

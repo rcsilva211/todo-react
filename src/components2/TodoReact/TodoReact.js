@@ -74,19 +74,30 @@ const TodoReact = () => {
       </div>
       <TodoForm addTodo={addTodo} />
       <TodoListFilter filter={filter} setFilter={setFilter} setSearchTerm={setSearchTerm} />
-      <div style={{ overflowY: 'auto', maxHeight: '250px' }}>
-        <ul>
-          {filteredTodos.map((todo) => (
-            <Todo
-              key={todo.id}
-              todo={todo}
-              toggleTodo={toggleTodo}
-              isEditing={isEditing === todo.id}
-              deleteTodo={deleteTodo}
-              editTodo={editTodo}
-            />
-          ))}
-        </ul>
+      <div
+        className="container-todo"
+        style={
+          filteredTodos.length === 0
+            ? { display: 'flex', justifyContent: 'center', alignItems: 'center', maxHeight: '270px', height: '100%' }
+            : { overflowY: 'auto', maxHeight: '270px', height: '100%' }
+        }
+      >
+        {filteredTodos.length === 0 ? (
+          <p>Nenhuma tarefa encontrada!</p>
+        ) : (
+          <ul>
+            {filteredTodos.map((todo) => (
+              <Todo
+                key={todo.id}
+                todo={todo}
+                toggleTodo={toggleTodo}
+                isEditing={isEditing === todo.id}
+                deleteTodo={deleteTodo}
+                editTodo={editTodo}
+              />
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

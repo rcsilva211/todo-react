@@ -11,26 +11,17 @@ function App() {
       <nav className="navbar">
         <ul className="navbar-links">
           <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')} // Conditionally apply active class
-            >
+            <NavLink to="/" className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/ex1"
-              className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')} // Conditionally apply active class
-            >
+            <NavLink to="/ex1" className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')}>
               Todo App
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/ex2"
-              className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')} // Conditionally apply active class
-            >
+            <NavLink to="/ex2" className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')}>
               Todo App - counter
             </NavLink>
           </li>
@@ -39,8 +30,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/ex1" element={<TodoApp />} />
-        <Route path="/ex2" element={<TodoApp2 />} />
+        <Route path="/ex1/*" element={<TodoApp />} />
+        <Route path="/ex2/*" element={<TodoApp2 />} />
       </Routes>
     </div>
   );
