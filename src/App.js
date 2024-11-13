@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import TodoApp from './components1/TodoReact/TodoReact';
 import TodoApp2 from './components2/TodoReact/TodoReact';
-import Home from './components3/Home/Home.js';
+import ATM from './components3/ATM/ATM.js';
 import './App.css';
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
       </nav>
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<ATM />} />
         <Route path="/ex1/*" element={<TodoApp />} />
         <Route path="/ex2/*" element={<TodoApp2 />} />
       </Routes>
