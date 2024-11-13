@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from '../../slice/counterSlice';
 import './ATM.css';
@@ -16,6 +16,10 @@ const ATM = () => {
       setInputValue('');
     }
   };
+
+  useEffect(() => {
+    document.title = balance === 0 ? `MB Simulator` : `Na conta: ${balance}€`;
+  }, [balance]);
 
   const handleWithdraw = () => {
     if (inputValue < 0) {
