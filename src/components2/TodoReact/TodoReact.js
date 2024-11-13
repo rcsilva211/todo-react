@@ -57,7 +57,7 @@ const TodoReact = () => {
   });
 
   return (
-    <div className="container">
+    <div className="container-component1">
       <div className="todo-header">
         <h1>Todo List</h1>
         <span>
