@@ -12,7 +12,7 @@ function App() {
         <ul className="navbar-links">
           <li>
             <NavLink to="/" className={({ isActive }) => (isActive ? 'navbar-item active-link' : 'navbar-item')}>
-              Home
+              Atm Sim
             </NavLink>
           </li>
           <li>
