@@ -47,9 +47,8 @@ button {
 }
 
 @media screen and (max-width: 600px) {
-  .container {
+  .container-component1 {
     padding: 1rem;
-    margin: 1rem;
     width: auto;
   }
 }

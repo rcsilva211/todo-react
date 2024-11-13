@@ -30,6 +30,6 @@ p {
 @media screen and (max-width: 600px) {
   .container {
     padding: 1rem;
-    margin: 1rem;
+    width: auto;
   }
 }
