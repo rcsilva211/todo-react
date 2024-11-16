@@ -12,6 +12,15 @@ function TodoForm({ addTodo }) {
     }
   };
 
+  function sendNotification() {
+    Notification.requestPermission().then(() => {
+      const notification = new Notification('Hello World!', {
+        body: 'This is a notification',
+        icon: 'https://irp.cdn-website.com/a255122d/dms3rep/multi/GettyImages-1140349002.jpg',
+      });
+    });
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -22,6 +31,9 @@ function TodoForm({ addTodo }) {
         onChange={(e) => setInput(e.target.value)}
       />
       <button type="submit">Adicionar</button>
+      <button id="btn" onClick={sendNotification}>
+        Send notifications
+      </button>
     </form>
   );
 }
