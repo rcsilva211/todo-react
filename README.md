@@ -8,16 +8,10 @@ Developed in: <br/>
 This is a simple project, using React. This was my first project done with it. All uses for it are free.
 This project was/is being made to learn and improve more on React. Practice makes perfect, regardless of how hard it might seem.
 
-## Roadmap
-
-- Custom pomodoro (with templates)
-- Spotify integration
-- Electron implementation (windows app)
-- React native version (mobile!)
-
 ## Credits
 
 Developed and maintained by [Rodrigo Silva](https://github.com/rcsilva211/).
+Built for Web Development Technologies - Master's class
 
 ## Bugs
 
